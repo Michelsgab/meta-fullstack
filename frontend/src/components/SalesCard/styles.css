@@ -1,0 +1,98 @@
+.meta__card {
+  padding: 30px 10px;
+  border-radius: 10px;
+  background-color: #283142;
+}
+
+.meta__sales__title {
+  color: #676fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.meta__form__container {
+  max-width: 300px;
+  margin-bottom: 16px;
+}
+
+.meta__form__controle {
+  width: 100%;
+  height: 46px;
+  font-size: 18px;
+  padding: 0 20px;
+  color: #9aaabe;
+  border-radius: 5px;
+  background-color: #1b2531;
+  border: 1px solid #384459;
+}
+
+.meta__sales__table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.meta__sales__table thead {
+  height: 55px;
+  font-size: 16px;
+  color: #e9e9e9;
+  font-weight: 700;
+}
+
+.meta__sales__table tbody {
+  font-size: 14px;
+  color: #cfcfcf;
+  font-weight: 400;
+  text-align: center;
+}
+
+.meta__sales__table tbody tr {
+  height: 74px;
+  border-top: 1px solid #5f6e82;
+}
+
+.meta__sales__table tbody tr:hover > td {
+  background-color: #384459;
+}
+
+.meta__sales__table tbody tr:nth-child(odd) {
+  background-color: #242c3b;
+}
+
+.meta__red__button__container {
+  display: flex;
+  justify-content: center;
+}
+
+.showId,
+.showDate,
+.showFootfall,
+.showSales {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .showDate {
+    display: table-cell;
+  }
+
+  .meta__card {
+    padding: 35px;
+  }
+
+  .meta__sales__table tbody tr {
+    height: 55px;
+  }
+
+  .meta__sales__table tbody {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  .showId,
+  .showFootfall,
+  .showSales {
+    display: table-cell;
+  }
+}
