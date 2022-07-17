@@ -77,7 +77,7 @@ export default function SalesCard() {
                     <td>
                       <div className="meta__red__button__container">
                         <div className="meta__red__button">
-                          <NotificationButton />
+                          <NotificationButton saleId={sale.id} />
                         </div>
                       </div>
                     </td>
