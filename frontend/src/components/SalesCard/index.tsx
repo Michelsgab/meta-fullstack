@@ -1,8 +1,9 @@
 import "./styles.css";
+import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import NotificationButton from "../NotificationButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SalesCard() {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -10,6 +11,12 @@ export default function SalesCard() {
 
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
+
+  useEffect(() => {
+    axios.get("https://meta-fullstack.herokuapp.com/sales").then(response => {
+      console.log(response);
+    })
+  }, [])
 
   return (
     <>
