@@ -8,6 +8,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
+		<!-- Teste -->
 	</parent>
 	<groupId>com.br.meta</groupId>
 	<artifactId>meta</artifactId>
