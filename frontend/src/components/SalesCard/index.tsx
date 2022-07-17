@@ -4,6 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import NotificationButton from "../NotificationButton";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../utils/request";
+import { Sale } from "../../models/sale";
 
 export default function SalesCard() {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -12,11 +14,13 @@ export default function SalesCard() {
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
 
+  const [sales, setSales] = useState<Sale[]>([]);
+
   useEffect(() => {
-    axios.get("https://meta-fullstack.herokuapp.com/sales").then(response => {
-      console.log(response);
-    })
-  }, [])
+    axios.get(`${BASE_URL}/sales`).then((response) => {
+      setSales(response.data.content);
+    });
+  }, []);
 
   return (
     <>
@@ -54,21 +58,27 @@ export default function SalesCard() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="showId">#001</td>
-                <td className="showDate">10/07/2022</td>
-                <td>Gabriel</td>
-                <td className="showFootfall">1023</td>
-                <td className="showSales">310</td>
-                <td>R$34.000,00</td>
-                <td>
-                  <div className="meta__red__button__container">
-                    <div className="meta__red__button">
-                      <NotificationButton />
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              {sales.map((sale) => {
+                return (
+                  <tr key={sale.id}>
+                    <td className="showId">#{sale.id}</td>
+                    <td className="showDate">
+                      {new Date(sale.date).toLocaleDateString()}
+                    </td>
+                    <td>{sale.sellerName}</td>
+                    <td className="showFootfall">{sale.visited}</td>
+                    <td className="showSales">{sale.deals}</td>
+                    <td>R${sale.amount.toFixed(2)}</td>
+                    <td>
+                      <div className="meta__red__button__container">
+                        <div className="meta__red__button">
+                          <NotificationButton />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
